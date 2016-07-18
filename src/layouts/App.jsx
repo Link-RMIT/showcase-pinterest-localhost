@@ -21,13 +21,19 @@ class Layout extends React.Component {
     }
 }
 
+class Index extends React.Component {
+    render(){
+        return (<div><Add /><hr /> <MyPins /></div>)
+    }
+}
+
 export default class App extends React.Component {
     render(){
         console.log('render app');
         return (
             <Router history={hashHistory}>
                 <Route path="/" component={Layout}>
-                    <IndexRoute component={MyPins} />
+                    <IndexRoute component={Index} />
                     <Route path="my-pins" name="my-pins" component={MyPins}></Route>
                     <Route path="add" name="add" component={Add}></Route>
                 </Route>

@@ -12,11 +12,8 @@ export class MyPins extends React.Component {
         super(props);
         this.state = Object.assign(this.state || {}, props);
     }
+
     render(){
-        console.log("====================");
-        console.log(store.getState());
-        console.log(this.props);
-        console.log("====================");
         const list = this.props.pins;
         const pins_list = (list || []).map((pin)=>{
             return (
@@ -24,16 +21,19 @@ export class MyPins extends React.Component {
             );
         });
         return (
-            <div id="pins">
-                <h1>My Pins</h1>
-                { pins_list }
+            <div>
+                <h1 style={{clear:'both',width:'100%'}}>My Pins</h1>
+                <div id="pins">
+
+                    { pins_list }
+                </div>
             </div>
         )
     }
 }
 
 /*
-MyPins.propTypes = {
-    pins: React.PropTypes.array.isRequired,
-}
-*/
+   MyPins.propTypes = {
+   pins: React.PropTypes.array.isRequired,
+   }
+ */
