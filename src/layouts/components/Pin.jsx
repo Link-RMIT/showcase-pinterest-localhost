@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
 import { Link } from "react-router";
-import { store } from '../storage.js'
+import { remove } from '../actions.js'
 
 
 export class BasicPin extends React.Component {
@@ -46,16 +47,20 @@ export class PublicPin extends BasicPin{
     }
 }
 
+@connect((store)=>{
+    return {}
+})
 export class MyPin extends BasicPin{
-    onDelete(){
+    onRemove(){
         console.log(this.props);
-        console.log('delete');
+        console.log('remove');
+        this.props.dispatch(remove(this.props.pin._id));
     }
     constructor(props){
         super(props);
         //const {userId, userName} = this.props.pin;
         this.state.rest = (
-            <button className="btn btn-link delete" onClick={()=>{this.props.onDelete(this.props.pin)}}>
+            <button className="btn btn-link delete" onClick={this.onRemove.bind(this)}>
                 Delete
             </button>
         );

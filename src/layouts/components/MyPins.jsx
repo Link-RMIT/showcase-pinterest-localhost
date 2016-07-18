@@ -1,26 +1,31 @@
 import React from "react";
 import { MyPin} from './Pin.jsx';
+import { connect } from 'react-redux';
+import store from '../store.js';
 
+@connect((store)=>{
+
+    return  {pins: (store ? store.pins : [])};
+})
 export class MyPins extends React.Component {
     constructor(props){
         super(props);
         this.state = Object.assign(this.state || {}, props);
     }
-    onDelete(pin){
-        console.log(pin);
-        this.setState({
-            pins: this.state.pins.filter((p)=>{return p._id != pin._id}),
-        });
-    }
     render(){
-        const list = this.state.pins;
+        console.log("====================");
+        console.log(store.getState());
+        console.log(this.props);
+        console.log("====================");
+        const list = this.props.pins;
         const pins_list = (list || []).map((pin)=>{
             return (
-                <MyPin pin={ pin } key={ pin._id } onDelete={ this.onDelete.bind(this) }/>
+                <MyPin pin={ pin } key={ pin._id }/>
             );
         });
         return (
             <div id="pins">
+                <h1>My Pins</h1>
                 { pins_list }
             </div>
         )

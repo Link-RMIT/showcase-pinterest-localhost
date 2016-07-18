@@ -4,7 +4,6 @@ import { IndexLink, Link } from "react-router";
 export default class Nav extends React.Component {
     render(){
         const routes = [
-            ['recent', 'Recent'],
             ['my-pins', 'My Pins'],
             ['add', 'Add'],
         ].map((i,index)=>{ return (

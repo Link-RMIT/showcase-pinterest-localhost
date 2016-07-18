@@ -1,14 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, hashHistory } from "react-router";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 
-import Bootstrap from "bootstrap-without-jquery";
+import Bootstrap from 'bootstrap-without-jquery';
+import { store } from './store.js';
 import Nav from "./Nav.jsx";
-
-import AllPins from './components/AllPins.jsx'
-import MyPins from './components/MyPins.jsx'
-import UserPins from './components/UserPins.jsx'
+import { MyPins } from './components/MyPins.jsx'
 import { Add } from './components/Add.jsx'
 
 class Layout extends React.Component {
@@ -23,23 +21,15 @@ class Layout extends React.Component {
     }
 }
 
-class Foo extends React.Component {
-    render(){
-        <div>foo</div>
-    }
-}
-
 export default class App extends React.Component {
     render(){
         console.log('render app');
         return (
             <Router history={hashHistory}>
                 <Route path="/" component={Layout}>
-                    <IndexRoute component={AllPins} />
-                    <Route path="recent" name="recent" component={AllPins}></Route>
+                    <IndexRoute component={MyPins} />
                     <Route path="my-pins" name="my-pins" component={MyPins}></Route>
                     <Route path="add" name="add" component={Add}></Route>
-                    <Route path="user/:userId" name="user" component={UserPins}></Route>
                 </Route>
             </Router>
         );

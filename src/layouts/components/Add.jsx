@@ -1,5 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { add } from '../actions.js';
 
+@connect((store) => {
+    return {};
+})
 export class Add extends React.Component {
     constructor(){
         super();
@@ -10,6 +15,10 @@ export class Add extends React.Component {
             url: this.refs.url.value,
             title: this.refs.title.value,
         });
+        this.props.dispatch(add({
+            url: this.refs.url.value,
+            title: this.refs.title.value,
+        }));
     }
     render(){
         console.log('add');
